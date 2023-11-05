@@ -69,12 +69,12 @@ class MainActivity : ComponentActivity() {
                         ),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NavHost(navController = navController, startDestination = "main") {
-                        composable("main") {
+                    NavHost(navController = navController, startDestination = Routes.MAIN.name) {
+                        composable(Routes.MAIN.name) {
                             MainScreen(products = products,
                                     navController = navController)
                         }
-                        composable("details/{title}") {
+                        composable("${Routes.DETAILS.name}/{title}") {
                             val title = it.arguments?.getString("title") ?: ""
                             DetailsScreen(title = title, navController = navController)
                         }
