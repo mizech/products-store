@@ -46,8 +46,17 @@ fun DetailsScreen(navController: NavController, product: Product) {
                     Icon(Icons.Filled.ArrowBack, null)
                 }
         })
-        Text(text = product.title, fontSize = 28.sp, fontWeight = FontWeight.Bold)
-        Text(text = product.category, fontSize = 24.sp, fontWeight = FontWeight.Bold)
-        Text(text = product.description, fontSize = 20.sp)
+        Text(text = product.title,
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold)
+        Text(text = "Category: ${product.category}",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold)
+        Text(text = product.description,
+            fontSize = 20.sp)
+        Text(text = "Price: ${product.price} €",
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = 12.dp))
     }
 }

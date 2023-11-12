@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.productsstore.models.Product
 import com.example.productsstore.Rating
@@ -40,15 +41,18 @@ fun MainScreen(products: MutableList<Product>, navController: NavController) {
                 textAlign = TextAlign.Center)
         })
     }) {
-        LazyColumn(modifier = Modifier) {
+        LazyColumn(modifier = Modifier.padding(top = 65.dp)) {
             items(products) { product ->
                 Column(modifier = Modifier
-                    .padding(horizontal = 15.dp, vertical = 12.dp)
+                    .padding(horizontal = 15.dp)
                     .clickable {
                         navController.navigate("details/${product.id}")
                     }) {
-                    Text(product.title, fontWeight = FontWeight.Bold)
-                    Text(product.description)
+                    Text(product.title,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp)
+                    Text(product.description,
+                        modifier = Modifier.padding(bottom = 15.dp))
                 }
             }
         }
