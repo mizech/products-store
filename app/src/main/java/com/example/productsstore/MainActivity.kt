@@ -28,26 +28,16 @@ class MainActivity : ComponentActivity() {
                 val productsVM by viewModels<ProductsVM>()
                 val productVM by viewModels<ProductVM>()
 
-                Surface(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(
-                            horizontal = 20.dp,
-                            vertical = 10.dp
-                        ),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    NavHost(navController = navController, startDestination = Routes.MAIN.name) {
-                        composable(Routes.MAIN.name) {
-                            MainScreen(products = productsVM.products,
-                                    navController = navController)
-                        }
-                        composable("${Routes.DETAILS.name}/{id}") {
-                            val id = it.arguments?.getString("id") ?: ""
-                            productVM.loadProduct(id = id)
-                            DetailsScreen(navController = navController,
-                                product = productVM.product.value)
-                        }
+                NavHost(navController = navController, startDestination = Routes.MAIN.name) {
+                    composable(Routes.MAIN.name) {
+                        MainScreen(products = productsVM.products,
+                            navController = navController)
+                    }
+                    composable("${Routes.DETAILS.name}/{id}") {
+                        val id = it.arguments?.getString("id") ?: ""
+                        productVM.loadProduct(id = id)
+                        DetailsScreen(navController = navController,
+                            product = productVM.product.value)
                     }
                 }
             }
