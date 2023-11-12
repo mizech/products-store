@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit
 
 class ProductsVM: ViewModel() {
     var products = mutableStateListOf<Product>()
+        private set
 
     init {
         CoroutineScope(Dispatchers.IO).launch {

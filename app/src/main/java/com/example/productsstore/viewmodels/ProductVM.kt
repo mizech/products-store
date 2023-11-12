@@ -12,6 +12,7 @@ import kotlinx.coroutines.withContext
 
 class ProductVM: ViewModel() {
     var product = mutableStateOf<Product>(Product())
+        private set
 
     fun loadProduct(id: String) {
         CoroutineScope(Dispatchers.IO).launch {
