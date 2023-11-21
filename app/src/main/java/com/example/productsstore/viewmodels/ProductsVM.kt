@@ -1,6 +1,7 @@
 package com.example.productsstore.viewmodels
 
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.ViewModel
 import com.example.productsstore.ProductServices
 import com.example.productsstore.RetrofitInstance
@@ -14,7 +15,6 @@ import java.util.concurrent.TimeUnit
 
 class ProductsVM: ViewModel() {
     var products = mutableStateListOf<Product>()
-        private set
 
     init {
         CoroutineScope(Dispatchers.IO).launch {
