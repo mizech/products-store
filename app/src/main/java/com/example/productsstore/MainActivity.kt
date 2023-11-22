@@ -40,9 +40,9 @@ class MainActivity : ComponentActivity() {
                     composable(Routes.MAIN.name) {
                         MainScreen(products = productsVM.products.filter
                             {
-                                ".*${searchTerm}.*"
+                                ".*${searchTerm.lowercase()}.*"
                                     .toRegex()
-                                    .find(it.title) != null
+                                    .find(it.title.lowercase()) != null
                             }
                                 as MutableList<Product>,
                             navController = navController,
