@@ -48,6 +48,7 @@ fun MainScreen(products: MutableList<Product>,
         })
     }) {
         Column(modifier = Modifier.fillMaxSize()) {
+            // Todo: Delete-Icon (X)
             TextField(value = searchTerm,
                 onValueChange = {
                                 onChange(it)

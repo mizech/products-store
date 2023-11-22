@@ -39,7 +39,11 @@ class MainActivity : ComponentActivity() {
                 NavHost(navController = navController, startDestination = Routes.MAIN.name) {
                     composable(Routes.MAIN.name) {
                         MainScreen(products = productsVM.products.filter
-                            { it.title.contains(searchTerm, ignoreCase = true) }
+                            {
+                                ".*${searchTerm}.*"
+                                    .toRegex()
+                                    .find(it.title) != null
+                            }
                                 as MutableList<Product>,
                             navController = navController,
                             searchTerm = searchTerm,
