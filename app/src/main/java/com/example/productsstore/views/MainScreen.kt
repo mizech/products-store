@@ -62,6 +62,7 @@ fun MainScreen(products: MutableList<Product>,
                         .clickable {
                             navController.navigate("details/${product.id}")
                         }) {
+                        // Todo: Put everything within a Card-container element
                         Text(product.title,
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp)
