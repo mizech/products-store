@@ -13,8 +13,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CardElevation
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedCard
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -49,25 +54,29 @@ fun MainScreen(products: MutableList<Product>,
     }) {
         Column(modifier = Modifier.fillMaxSize()) {
             // Todo: Delete-Icon (X)
-            TextField(value = searchTerm,
+            OutlinedTextField(value = searchTerm,
                 onValueChange = {
                                 onChange(it)
                 },
                 label = { Text("Search Product") },
-                modifier = Modifier.fillMaxWidth().padding(top = 70.dp))
-            LazyColumn(modifier = Modifier.padding(top = 10.dp)) {
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 70.dp, start = 6.dp, end = 6.dp))
+            LazyColumn(modifier = Modifier.padding(vertical = 4.dp, horizontal = 5.dp)) {
                 items(products) { product ->
-                    Column(modifier = Modifier
-                        .padding(horizontal = 15.dp)
-                        .clickable {
-                            navController.navigate("details/${product.id}")
-                        }) {
-                        // Todo: Put everything within a Card-container element
-                        Text(product.title,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp)
-                        Text(product.description,
-                            modifier = Modifier.padding(bottom = 15.dp))
+                    OutlinedCard(modifier = Modifier.fillMaxSize().padding(4.dp),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)) {
+                        Column(modifier = Modifier
+                            .padding(horizontal = 15.dp)
+                            .clickable {
+                                navController.navigate("details/${product.id}")
+                            }) {
+                            Text(product.title,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 20.sp)
+                            Text(product.description,
+                                modifier = Modifier.padding(bottom = 15.dp))
+                        }
                     }
                 }
             }
