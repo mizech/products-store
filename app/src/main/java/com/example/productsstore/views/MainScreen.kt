@@ -53,10 +53,16 @@ fun MainScreen(products: MutableList<Product>,
         })
     }) {
         Column(modifier = Modifier.fillMaxSize()) {
-            // Todo: Delete-Icon (X)
             OutlinedTextField(value = searchTerm,
                 onValueChange = {
                                 onChange(it)
+                },
+                trailingIcon = {
+                               Icon(Icons.Default.Clear,
+                                   contentDescription = "",
+                                   modifier = Modifier.clickable {
+                                       onChange("")
+                                   })
                 },
                 label = { Text("Search Product") },
                 modifier = Modifier
