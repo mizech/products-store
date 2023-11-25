@@ -79,9 +79,11 @@ fun MainScreen(products: MutableList<Product>,
                             }) {
                             Text(product.title,
                                 fontWeight = FontWeight.Bold,
-                                fontSize = 20.sp)
+                                fontSize = 20.sp,
+                                modifier = Modifier.padding(bottom = 8.dp))
                             Text(product.description,
-                                modifier = Modifier.padding(bottom = 15.dp))
+                                maxLines = 5,
+                                modifier = Modifier.padding(bottom = 16.dp))
                         }
                     }
                 }

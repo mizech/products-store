@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -52,22 +53,22 @@ fun DetailsScreen(navController: NavController, product: Product) {
                 })
         }
     ) {
-        OutlinedCard(modifier = Modifier.padding(6.dp),
-            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)) {
+        Card(modifier = Modifier.padding(6.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)) {
             Column(modifier = Modifier
-                // .fillMaxSize()
                 .padding(horizontal = 15.dp)
                 .padding(top = 70.dp, bottom = 15.dp),
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.Start) {
                 Text(text = product.title,
-                    fontSize = 28.sp,
-                    fontWeight = FontWeight.Bold)
-                Text(text = "Category: ${product.category}",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold)
+                Text(text = "Category: ${product.category}",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(bottom = 12.dp))
                 Text(text = product.description,
-                    fontSize = 20.sp)
+                    fontSize = 16.sp)
                 Text(text = "Price: ${product.price} €",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
