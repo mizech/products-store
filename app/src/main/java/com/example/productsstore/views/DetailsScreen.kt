@@ -2,11 +2,14 @@ package com.example.productsstore.views
 
 import android.annotation.SuppressLint
 import androidx.activity.viewModels
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Card
@@ -23,6 +26,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -53,27 +57,25 @@ fun DetailsScreen(navController: NavController, product: Product) {
                 })
         }
     ) {
-        Card(modifier = Modifier.padding(6.dp),
-            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)) {
-            Column(modifier = Modifier
-                .padding(horizontal = 15.dp)
-                .padding(top = 70.dp, bottom = 15.dp),
-                verticalArrangement = Arrangement.Top,
-                horizontalAlignment = Alignment.Start) {
-                Text(text = product.title,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold)
-                Text(text = "Category: ${product.category}",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(bottom = 12.dp))
-                Text(text = product.description,
-                    fontSize = 16.sp)
-                Text(text = "Price: ${product.price} €",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(top = 12.dp))
-            }
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 20.dp)
+            .padding(top = 75.dp, bottom = 15.dp),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.Start) {
+            Text(text = product.title,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold)
+            Text(text = "Category: ${product.category}",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(bottom = 12.dp))
+            Text(text = product.description,
+                fontSize = 16.sp)
+            Text(text = "Price: ${product.price} €",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(top = 12.dp))
         }
     }
 }
